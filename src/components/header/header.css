@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap");
+
+body{
+    margin: 0;
+}
+
+#root{
+    background-color: #FFFFFF;
+}
+
+.header{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    background: #ff5000;
+    height: 3.938rem;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.search-container{
+    display: flex;
+    align-self: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.search-container>input{
+    border: none;
+    border-radius: 10px;
+    margin: 0 1%;
+    width: 17rem;
+    font-size: 18px;
+    color: rgba(0,0,0,.5);
+    padding: 0 0 0 1%;
+    font-family: "Nunito";
+}
+
+.search-container>input:focus{
+    outline: none;
+    border: solid 1px #5d5b5b;
+}
+
+.search-container>div>svg{
+    color: white;
+    font-size: 2.1rem;
+    cursor: pointer;
+}
+
+.menu-icon-container, .search-mobile-container, .hide{
+    display: none;
+}
+
+@media (max-width: 425px){
+    
+    .header{
+        justify-content: space-between;
+        height: 3rem;
+    }
+
+    .search-container{
+        display: none;
+    }
+
+    .search-mobile-container{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 2%;
+    }
+
+    .search-mobile-container>input{
+        border: none;
+        border-radius: 10px;
+        margin: 0 4%;
+        width: 12rem;
+        height: 80%;
+        font-size: 16px;
+        color: rgba(0,0,0,.5);
+        padding: 0 0 0 4%;
+        font-family: "Nunito";
+    }
+    
+    .search-mobile-container>input:focus{
+        outline: none;
+        border: solid 1px #5d5b5b;
+    }
+    
+    .search-mobile-container>div>svg{
+        color: white;
+        font-size: 1.6rem;
+    }
+
+    .hide{
+        display: none;
+    }
+
+    .menu-icon-container{
+        display: block;
+        margin: 1% 2% 0 0;
+    }
+
+    .menu-icon-container>svg{
+        color: white;
+        font-size: 2.1rem;
+        display: block;
+        padding: 9% 28% 0 0;
+    }
+
+    header>:nth-child(4){
+        background: #ff5000;
+        position: absolute;
+        right: 0;
+        box-sizing: border-box;
+        width: 16rem;
+        height: 30rem;
+    }
+
+    header>:nth-child(4)>svg{
+        font-size: 3rem;
+        color: white;
+        margin-left: 80%;
+        margin-top: 2%;
+    }
+
+}
