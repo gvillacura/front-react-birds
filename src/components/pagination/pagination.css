@@ -1,0 +1,38 @@
+.nav{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    background: white;
+    border-radius: 6px;
+    width: 75%;
+    justify-content: space-evenly;
+    padding: 0;
+    list-style: none;
+    height: 3rem;
+    align-items: center;
+    margin: 0;
+}
+
+a{
+    color: #ff5000;
+    cursor: pointer;
+    font-family: "Nunito";
+    font-size: 14px;
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+
+.slick-track{
+    display: flex;
+}
+
+.slick-slider{
+    width: 50%;
+}

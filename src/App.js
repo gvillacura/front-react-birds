@@ -6,7 +6,7 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <AllBirds />;
+      <AllBirds />
     </Fragment>
   );
 }

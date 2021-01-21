@@ -39,7 +39,7 @@ const ModalBird = (props) => {
           </div>
         </div>
         <div className="gen-info-container">
-          <span>Descripción general</span>
+          <span>Información general</span>
           <span>
             El bailarín es un ave de rapiña mediana que mide entre 35 y 43
             centímetros de longitud, y pesa entre 250 y 380 gramos. En vuelo se

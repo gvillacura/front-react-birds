@@ -1,18 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap");
 
+
+.birds-pagination-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .all-birds-container{
     display: flex;
     flex-wrap: wrap;
     padding: 6rem 5% 5% 5%;
     justify-content: space-evenly;
-    height: 100vh;
 }
 
 .all-birds-container>div{
     box-sizing: border-box;
     border: solid 1px black;
     width: 13rem;
-    height: 15rem;
+    height: 16rem;
     margin-bottom: 4%;
     background: #fff;
     border: 1px solid rgb(0, 0, 0, .125);
@@ -27,6 +32,7 @@
 
 .img-container>img{
     height: 100%;
+    max-width: 12rem;
 }
 
 .all-birds-container>div>h3{
@@ -57,5 +63,22 @@
     .all-birds-container>div{
         width: 10rem;
     }
+
+    .img-container{
+        height: 60%;
+        margin-top: 9%;
+    }
+    
+    .img-container>img{
+        max-width: 9rem;
+    }
+
+    .all-birds-container>div>h3{
+        font-size: 16px;
+        margin: 6% 0;
+    }
+
+    .all-birds-container>div>p{
+        text-align: center;}
 
 }
