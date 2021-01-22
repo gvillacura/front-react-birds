@@ -22,7 +22,7 @@ const Header = () => {
         <div>
           <Icon icon={searchLine} />
         </div>{" "}
-        <input type="text" />
+        <input type="text" placeholder="Buscar por nombre" />
       </div>
       <div className="search-mobile-container">
         <div>

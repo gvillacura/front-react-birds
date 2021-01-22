@@ -7,9 +7,14 @@ import "./allBirds.css";
 const AllBirds = () => {
   let [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [birdsPerPage, setBirdsPerPage] = useState(10);
+  const [birdsPerPage, setBirdsPerPage] = useState(20);
   let [name, setName] = useState("");
   let [photo, setPhoto] = useState("");
+
+  const filterData = (e) => {
+    const newData = data.filter((item) => item.name.spanish === e.target.value);
+    setData((data = newData));
+  };
 
   const [showModal, setShowModal] = useState(false);
 
@@ -33,9 +38,6 @@ const AllBirds = () => {
     const allData = await fetch("https://aves.ninjas.cl/api/birds");
     const dataJson = await allData.json();
     setData((data = dataJson));
-    //let dataPage1 = data.slice(0, 10);
-    //setPage1((page1 = dataPage1));
-    console.log(data);
   };
 
   const birds = currentBrids.map((item) => {
@@ -68,6 +70,7 @@ const AllBirds = () => {
           birdsPerPage={birdsPerPage}
           totalBirds={data.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
       </div>
       {showModal === false ? null : (
