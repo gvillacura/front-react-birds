@@ -1,13 +1,24 @@
+import React, { useState } from "react";
 import Header from "../src/components/header/Header";
 import AllBirds from "../src/components/allBirds/AllBirds";
-import { Fragment } from "react";
+import BirdContext from "../src/components/context/BirdContext";
+//import { Fragment } from "react";
 
 function App() {
+  let [dataBirds, setDataBirds] = useState([]);
+  let [dataBirdsToFilter, setDataBirdsToFilter] = useState([]);
   return (
-    <Fragment>
+    <BirdContext.Provider
+      value={{
+        dataBirds,
+        setDataBirds,
+        dataBirdsToFilter,
+        setDataBirdsToFilter,
+      }}
+    >
       <Header />
       <AllBirds />
-    </Fragment>
+    </BirdContext.Provider>
   );
 }
 
