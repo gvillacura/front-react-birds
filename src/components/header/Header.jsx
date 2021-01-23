@@ -20,7 +20,9 @@ const Header = () => {
 
   const filterData = (e) => {
     let newData = dataBirds.filter((item) =>
-      item.name.spanish.toLowerCase().includes(e.target.value.toLowerCase())
+      item.name.spanish
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase().trim())
     );
     if (e.target.value.trim() === "") {
       newData = dataBirds;

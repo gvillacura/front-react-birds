@@ -12,10 +12,10 @@ const ModalBird = (props) => {
         </div>
         <div className="img-info-container">
           <div>
-            <img src={props.img} alt="img-bird" />
+            <img src={props.info.images.main} alt="img-bird" />
           </div>
           <div>
-            <h3>COLIBRI</h3>
+            <h3>{props.info.name.spanish}</h3>
             <div>
               <span>Nombre en inglés:</span>
               <span>Whited-tailed Kite</span>

@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import image from "../../media/colibri.jpg";
 import BirdContext from "../context/BirdContext";
 import ModalBird from "../modalBird/ModalBird";
 import Pagination from "../pagination/Pagination";
@@ -9,12 +8,15 @@ const AllBirds = () => {
   const { dataBirdsToFilter, setDataBirdsToFilter, setDataBirds } = useContext(
     BirdContext
   );
+  const [selfDataBird, setSelfDataBird] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [birdsPerPage] = useState(20);
-
+  const [birdsPerPage] = useState(70);
   const [showModal, setShowModal] = useState(false);
 
-  const openModal = () => {
+  const openModal = async (self) => {
+    const selfData = await fetch(self);
+    const selfDataJson = await selfData.json();
+    setSelfDataBird(selfDataJson);
     setShowModal(true);
   };
 
@@ -28,7 +30,7 @@ const AllBirds = () => {
 
   const indexOfLastBird = currentPage * birdsPerPage;
   const indexOfFirstBird = indexOfLastBird - birdsPerPage;
-  const currentBrids = dataBirdsToFilter.slice(
+  const currentBirds = dataBirdsToFilter.slice(
     indexOfFirstBird,
     indexOfLastBird
   );
@@ -40,7 +42,7 @@ const AllBirds = () => {
     setDataBirds(dataJson);
   };
 
-  const birds = currentBrids.map((item) => {
+  const birds = currentBirds.map((item) => {
     return (
       <div key={item.id}>
         <div className="img-container">
@@ -48,19 +50,12 @@ const AllBirds = () => {
           <img src={item.images.main} alt="img-bird" />
         </div>
         <h3>{item.name.spanish}</h3>
-        <p onClick={openModal}>Ver más</p>
+        <p onClick={() => openModal(item._links.self)}>Ver más</p>
       </div>
     );
   });
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // dataJson[0].name.spanish --> nombre en español
-  // dataJson[0].name.english --> inglés
-  // dataJson[0].images.main --> foto
-  // const nextPage = (pageNumber) => {
-  //   setCurrentPage(pageNumber + 1);
-  // };
 
   return (
     <Fragment>
@@ -74,7 +69,7 @@ const AllBirds = () => {
         />
       </div>
       {showModal === false ? null : (
-        <ModalBird img={image} close={closeModal} />
+        <ModalBird info={selfDataBird} close={closeModal} />
       )}
     </Fragment>
   );
