@@ -9,14 +9,12 @@ const AllBirds = () => {
   const {
     dataBirdsToFilter,
     setDataBirdsToFilter,
-    dataBirds,
     setDataBirds,
     birdsPerPage,
+    currentPage,
+    setCurrentPage,
   } = useContext(BirdContext);
-  //const { birdsPerPage } = useContext(BirdsPerPageContext);
   const [selfDataBird, setSelfDataBird] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  // const [birdsPerPage] = useState(70);
   const [showModal, setShowModal] = useState(false);
 
   const openModal = async (self) => {
@@ -70,7 +68,7 @@ const AllBirds = () => {
         <div className="space"></div>
         <Pagination
           birdsPerPage={birdsPerPage}
-          totalBirds={dataBirds.length}
+          totalBirds={dataBirdsToFilter.length}
           paginate={paginate}
           currentPage={currentPage}
         />

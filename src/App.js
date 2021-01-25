@@ -9,6 +9,7 @@ function App() {
   let [dataBirds, setDataBirds] = useState([]);
   let [dataBirdsToFilter, setDataBirdsToFilter] = useState([]);
   let [birdsPerPage, setBirdsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <BirdContext.Provider
@@ -19,6 +20,8 @@ function App() {
         setDataBirdsToFilter,
         birdsPerPage,
         setBirdsPerPage,
+        currentPage,
+        setCurrentPage,
       }}
     >
       <Header />

@@ -5,9 +5,12 @@ import { Icon } from "@iconify/react";
 import searchLine from "@iconify-icons/ri/search-line";
 
 const Header = () => {
-  const { setDataBirdsToFilter, dataBirds, setBirdsPerPage } = useContext(
-    BirdContext
-  );
+  const {
+    setDataBirdsToFilter,
+    dataBirds,
+    setBirdsPerPage,
+    setCurrentPage,
+  } = useContext(BirdContext);
 
   const filterData = (e) => {
     let newData = dataBirds.filter((item) =>
@@ -19,11 +22,13 @@ const Header = () => {
       newData = dataBirds;
     }
     setDataBirdsToFilter(newData);
+    setCurrentPage(1);
   };
 
   const filterBirdsPerPage = (e) => {
     let numberOfBirds = e.target.value;
     setBirdsPerPage(numberOfBirds);
+    setCurrentPage(1);
   };
 
   return (
