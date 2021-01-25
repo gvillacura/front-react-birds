@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
+import Skeleton from "react-loading-skeleton";
 import BirdContext from "../context/BirdContext";
 import ModalBird from "../modalBird/ModalBird";
 import Pagination from "../pagination/Pagination";
@@ -15,7 +16,7 @@ const AllBirds = () => {
   } = useContext(BirdContext);
   const [selfDataBird, setSelfDataBird] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   const openModal = async (self) => {
     const selfData = await fetch(self);
     const selfDataJson = await selfData.json();
@@ -29,6 +30,12 @@ const AllBirds = () => {
 
   useEffect(() => {
     getData();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }, []);
 
   const indexOfLastBird = currentPage * birdsPerPage;
@@ -58,25 +65,61 @@ const AllBirds = () => {
     );
   });
 
+  const birdsSkeleton = () => {
+    const numberBirdsSkeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    return (
+      <div className="birds-pagination-container">
+        <div className="all-birds-container">
+          {numberBirdsSkeleton.map((item) => {
+            return (
+              <div>
+                <div className="img-container">
+                  <div>
+                    <Skeleton width={145} height={145} />
+                  </div>
+                </div>
+                <h3>
+                  <Skeleton width={160} height={20} />
+                </h3>
+                <p>
+                  <Skeleton width={50} height={15} />
+                </p>
+              </div>
+            );
+          })}
+        </div>
+        <nav>
+          <ul className="pagination">
+            <Skeleton />
+          </ul>{" "}
+        </nav>
+      </div>
+    );
+  };
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  return (
-    <Fragment>
-      <div className="birds-pagination-container">
-        <div className="all-birds-container">{birds}</div>
-        <div className="space"></div>
-        <Pagination
-          birdsPerPage={birdsPerPage}
-          totalBirds={dataBirdsToFilter.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
-      </div>
-      {showModal === false ? null : (
-        <ModalBird info={selfDataBird} close={closeModal} />
-      )}
-    </Fragment>
-  );
+  if (loading) {
+    return <Fragment> {birdsSkeleton()} </Fragment>;
+  } else {
+    return (
+      <Fragment>
+        <div className="birds-pagination-container">
+          <div className="all-birds-container">{birds}</div>
+          <div className="space"></div>
+          <Pagination
+            birdsPerPage={birdsPerPage}
+            totalBirds={dataBirdsToFilter.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </div>
+        {showModal === false ? null : (
+          <ModalBird info={selfDataBird} close={closeModal} />
+        )}
+      </Fragment>
+    );
+  }
 };
 
 export default AllBirds;
