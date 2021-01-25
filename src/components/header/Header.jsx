@@ -1,22 +1,13 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import "./header.css";
 import BirdContext from "../context/BirdContext";
 import { Icon } from "@iconify/react";
 import searchLine from "@iconify-icons/ri/search-line";
-import alignRight from "@iconify-icons/ri/align-right";
-import closeCircleLine from "@iconify-icons/ri/close-circle-line";
 
 const Header = () => {
-  const menu = useRef(null);
-  const { setDataBirdsToFilter, dataBirds } = useContext(BirdContext);
-
-  const openMenu = () => {
-    menu.current.classList.remove("hide");
-  };
-
-  const closeMenu = () => {
-    menu.current.classList.add("hide");
-  };
+  const { setDataBirdsToFilter, dataBirds, setBirdsPerPage } = useContext(
+    BirdContext
+  );
 
   const filterData = (e) => {
     let newData = dataBirds.filter((item) =>
@@ -30,8 +21,22 @@ const Header = () => {
     setDataBirdsToFilter(newData);
   };
 
+  const filterBirdsPerPage = (e) => {
+    let numberOfBirds = e.target.value;
+    setBirdsPerPage(numberOfBirds);
+  };
+
   return (
     <header className="header">
+      <div className="number-container">
+        <p>Aves por página</p>
+        <select defaultValue="10" onChange={filterBirdsPerPage}>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
+      </div>
       <div className="search-container">
         <div>
           <Icon icon={searchLine} />
@@ -43,18 +48,6 @@ const Header = () => {
             filterData(e);
           }}
         />
-      </div>
-      <div className="search-mobile-container">
-        <div>
-          <Icon icon={searchLine} />
-        </div>{" "}
-        <input type="text" />
-      </div>
-      <div className="menu-icon-container" onClick={openMenu}>
-        <Icon icon={alignRight} />
-      </div>
-      <div ref={menu} className="hide">
-        <Icon icon={closeCircleLine} onClick={closeMenu} />
       </div>
     </header>
   );

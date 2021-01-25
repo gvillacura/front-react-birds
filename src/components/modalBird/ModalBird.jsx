@@ -10,63 +10,39 @@ const ModalBird = (props) => {
         <div>
           <Icon icon={closeCircleLine} onClick={props.close} />
         </div>
-        <div className="img-info-container">
-          <div>
-            <img src={props.info.images.main} alt="img-bird" />
-          </div>
-          <div>
-            <h3>{props.info.name.spanish}</h3>
-            <div>
-              <span>Nombre en inglés:</span>
-              <span>Whited-tailed Kite</span>
+        <div className="all-info-container">
+          <div className="img-name-container">
+            <div className="img-modal-container">
+              <img src={props.info.images.main} alt="img-bird" />
             </div>
-            <div>
-              <span>Longitud:</span>
-              <span>40 cm</span>
-            </div>
-            <div>
-              <span>Migratoria:</span>
-              <span> Si </span>
-            </div>
-            <div>
-              <span>Ubicación:</span>
-              <span>Entre la Región de Atacama la Región de Los Lagos</span>
-            </div>
-            <div>
-              <span>Especie:</span>
-              <span>Nativa</span>
+            <div className="names-container">
+              <h3>{props.info.name.spanish}</h3>
+              <div>
+                <span>Nombre en inglés:</span>
+                <span>{props.info.name.english}</span>
+              </div>
+              <div>
+                <span>Nombre en latín:</span>
+                <span>{props.info.name.latin}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="gen-info-container">
-          <span>Información general</span>
-          <span>
-            El bailarín es un ave de rapiña mediana que mide entre 35 y 43
-            centímetros de longitud, y pesa entre 250 y 380 gramos. En vuelo se
-            puede reconocer fácilmente debido a la característica posición
-            estática y estilizada que toma. Su coloración general es de tonos
-            grisáceos azulados en el dorso y blanquecinos en la cabeza, pecho y
-            vientre. En sus alas puntiagudas posee parches superiores e
-            inferiores de color negro. Sus rojos ojos están rodeados por plumas
-            de color negro lo que les da una apariencia característica. Tienen
-            un pico pequeño de color negro con tonos amarillos en su base. Sus
-            garras también son de color amarillo intenso. Pertenece al orden
-            Accipitriformes, formando parte de la familia Accipitridae, que se
-            caracterizan por tener las alas anchas, patas robustas y un pico
-            curvado y corto. Para obtener su alimento, que se compone
-            principalmente de pequeños mamíferos, se desplaza volando a media
-            altura y cuando se encuentra con una presa comienza a agitar sus
-            alas hasta quedar suspendido o detenido en el aire hasta que se
-            lanza en picada. Sus familiares en Chile son el peuquito, peucos,
-            varis, águilas y aguiluchos. Accipitriformes, formando parte de la
-            familia Accipitridae, que se caracterizan por tener las alas anchas,
-            patas robustas y un pico curvado y corto. Para obtener su alimento,
-            que se compone principalmente de pequeños mamíferos, se desplaza
-            volando a media altura y cuando se encuentra con una presa comienza
-            a agitar sus alas hasta quedar suspendido o detenido en el aire
-            hasta que se lanza en picada. Sus familiares en Chile son el
-            peuquito, peucos, varis, águilas y aguiluchos.
-          </span>
+          <div className="info-container">
+            <div className="size-location-container">
+              <div>
+                <span>Tamaño:</span>
+                <span>{props.info.size}</span>
+              </div>
+              <div>
+                <span>Ubicación:</span>
+                <span>{props.info.map.title}</span>
+              </div>
+            </div>
+            <div className="description-container">
+              <p>¿Sabías qué?</p>
+              <p>{props.info.didyouknow}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ nav{
     background: white;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.25) 1px 0px 6px 6px;
-    width: 75%;
+    width: 30%;
     justify-content: space-evenly;
     padding: 0;
     list-style: none;
@@ -23,6 +23,7 @@ a{
     color: #ff5000;
     cursor: pointer;
     font-family: "Nunito";
+    font-weight: 600;
     font-size: 14px;
 }
 
@@ -36,4 +37,10 @@ a:link, a:visited, a:active {
 
 .slick-slider{
     width: 50%;
+}
+
+@media (max-width:425px){
+    .pagination{
+        width: 60%;
+    }
 }

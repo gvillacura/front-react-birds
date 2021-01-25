@@ -1,16 +1,22 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import BirdContext from "../context/BirdContext";
+//import BirdsPerPageContext from "../context/BirdsPerPageContext";
 import ModalBird from "../modalBird/ModalBird";
 import Pagination from "../pagination/Pagination";
 import "./allBirds.css";
 
 const AllBirds = () => {
-  const { dataBirdsToFilter, setDataBirdsToFilter, setDataBirds } = useContext(
-    BirdContext
-  );
+  const {
+    dataBirdsToFilter,
+    setDataBirdsToFilter,
+    dataBirds,
+    setDataBirds,
+    birdsPerPage,
+  } = useContext(BirdContext);
+  //const { birdsPerPage } = useContext(BirdsPerPageContext);
   const [selfDataBird, setSelfDataBird] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [birdsPerPage] = useState(70);
+  // const [birdsPerPage] = useState(70);
   const [showModal, setShowModal] = useState(false);
 
   const openModal = async (self) => {
@@ -61,9 +67,10 @@ const AllBirds = () => {
     <Fragment>
       <div className="birds-pagination-container">
         <div className="all-birds-container">{birds}</div>
+        <div className="space"></div>
         <Pagination
           birdsPerPage={birdsPerPage}
-          totalBirds={dataBirdsToFilter.length}
+          totalBirds={dataBirds.length}
           paginate={paginate}
           currentPage={currentPage}
         />

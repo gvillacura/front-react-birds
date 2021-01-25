@@ -55,6 +55,10 @@
     font-weight: bold;
 }
 
+.space{
+    display: none;
+}
+
 @media (max-width: 425px){
 
     .all-birds-container {
@@ -80,5 +84,10 @@
 
     .all-birds-container>div>p{
         text-align: center;}
+
+    .space{
+        display: block;
+        height: 4rem;
+    }
 
 }

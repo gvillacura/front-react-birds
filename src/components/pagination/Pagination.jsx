@@ -35,7 +35,6 @@ const Pagination = (props) => {
   });
 
   return (
-    //<div class="nav">{numbers}</div>
     <nav>
       <ul className="pagination">{numbers}</ul>{" "}
     </nav>
