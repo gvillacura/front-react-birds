@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Header from "../src/components/header/Header";
 import AllBirds from "../src/components/allBirds/AllBirds";
 import BirdContext from "../src/components/context/BirdContext";
-//import BirdsPerPageContext from "../src/components/context/BirdsPerPageContext";
-//import { Fragment } from "react";
 
 function App() {
   let [dataBirds, setDataBirds] = useState([]);

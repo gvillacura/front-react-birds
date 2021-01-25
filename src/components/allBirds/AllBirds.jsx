@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import BirdContext from "../context/BirdContext";
-//import BirdsPerPageContext from "../context/BirdsPerPageContext";
 import ModalBird from "../modalBird/ModalBird";
 import Pagination from "../pagination/Pagination";
 import "./allBirds.css";
